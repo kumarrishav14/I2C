@@ -8,4 +8,5 @@ package i2c_pkg
 
     // UVM components & objects
     `include "i2c_transaction.sv"
+    `include "i2c_m_seq.sv"
 endpackage
