@@ -1,3 +1,28 @@
+/**************************************************************************************
+    VIP for I2C Protocol
+
+    Copyright (C) 2021  Rishav Kumar
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    License:    GPL v3, as found and defined in www.gnu.org
+                See: https://www.gnu.org/licenses/gpl-3.0.html. 
+
+    Author's intent:Any modifications made to this code, should be shared with
+                    the author in github.
+                    Code can be used for any high level verification.
+                    This code should not be redistributed as proprietary VIP
+
+***************************************************************************************/
+
 //  Class: i2c_m_seq
 //
 class i2c_m_seq extends uvm_sequence#(i2c_transaction);
@@ -16,7 +41,7 @@ class i2c_m_seq extends uvm_sequence#(i2c_transaction);
     //  Constructor: new
     function new(string name = "i2c_m_seq");
         super.new(name);
-        if (!uvm_config_db#(test_config)::get(null, "uvm_test_top.seq", config, test_cfg))
+        if (!uvm_config_db#(test_config)::get(null, "uvm_test_top.seq", "config", test_cfg))
             `uvm_fatal(get_name(), "test_config cannot be found in ConfigDB!")
         no_of_cases = test_cfg.no_of_cases;
     endfunction: new

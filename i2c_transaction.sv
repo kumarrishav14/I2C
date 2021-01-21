@@ -14,7 +14,7 @@
     GNU General Public License for more details.
 
     License:    GPL v3, as found and defined in www.gnu.org
-                https://www.gnu.org/licenses/gpl-3.0.html. 
+                See: https://www.gnu.org/licenses/gpl-3.0.html. 
 
     Author's intent:Any modifications made to this code, should be shared with
                     the author in github.
@@ -31,9 +31,9 @@ class i2c_transaction extends uvm_sequence_item;
 
     //  Group: Variables
     bit [7:0] id;
-    bit [6:0] addr;
-    bit [7:0] data[];
-    bit r_w;
+    rand bit [6:0] addr;
+    rand bit [7:0] data[];
+    rand bit r_w;
 
     //  Group: Constraints
     //  Constraint: data_size
@@ -65,7 +65,7 @@ endclass: i2c_transaction
 /*----------------------------------------------------------------------------*/
 /*  Constraints                                                               */
 /*----------------------------------------------------------------------------*/
-constraint i2c_transaction::data_val {
+constraint i2c_transaction::data_size {
     /*  solve order constraints  */
 
     /*  rand variable constraints  */
@@ -115,7 +115,7 @@ function bit i2c_transaction::do_compare(uvm_object rhs, uvm_comparer comparer);
     end
 endfunction: do_compare
 
-function void i2c_transaction::do_print(uvm_printer printer)
+function void i2c_transaction::do_print(uvm_printer printer);
     /*  chain the print with parent classes  */
     super.do_print(printer);
 
