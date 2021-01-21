@@ -35,4 +35,7 @@ package i2c_pkg;
     `include "i2c_config_objs.svh"
     `include "i2c_transaction.sv"
     `include "i2c_m_seq.sv"
+
+    `include "i2c_slave_seq_item.sv"
+    `include "i2c_slave_seq.sv"
 endpackage

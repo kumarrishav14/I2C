@@ -69,7 +69,7 @@ constraint i2c_transaction::data_size {
     /*  solve order constraints  */
 
     /*  rand variable constraints  */
-    data.size() <= 5;
+    data.size() inside { [1:5] };
 }
 
 /*----------------------------------------------------------------------------*/

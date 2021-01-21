@@ -100,5 +100,7 @@ task i2c_m_seq::body();
         trans = i2c_transaction::type_id::create("trans");
         trans.randomize();
         trans.print();
+
+        #1;
     end
 endtask: body
