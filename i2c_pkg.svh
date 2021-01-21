@@ -7,6 +7,7 @@ package i2c_pkg
     typedef enum bit { STORAGE, PERIPHERAL } slv_mode;
 
     // UVM components & objects
+    `include "i2c_config_objs.svh"
     `include "i2c_transaction.sv"
     `include "i2c_m_seq.sv"
 endpackage
