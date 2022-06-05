@@ -28,14 +28,32 @@ package i2c_pkg;
     import uvm_pkg::*;
     `include "uvm_macros.svh"
 
-    // Enums
-    typedef enum bit { STORAGE, PERIPHERAL } slv_mode;
+    //  Global level Enums
+    typedef enum bit        { STORAGE, PERIPHERAL } slave_mode;
+    typedef enum bit[4:0]   { SHORT = 7, LONG = 10 } address_mode;
+    typedef enum bit[1:0]   { 
+        STANDARD, 
+        FAST, 
+        FAST_PLUS, 
+        HIGH 
+    } speed_mode;
+
+
+    //  Global Level structures
+    typedef struct {
+        bit [9:0] start_addr;
+        bit [9:0] last_addr;
+    } slave_address;
+
 
     // UVM components & objects
     `include "i2c_config_objs.svh"
-    `include "i2c_transaction.sv"
-    `include "i2c_m_seq.sv"
+    `include "i2c_seq_item.sv"
+    // `include "i2c_m_seq.sv"
 
-    `include "i2c_slave_seq_item.sv"
-    `include "i2c_slave_seq.sv"
+    // `include "i2c_slave_seq_item.sv"
+    // `include "i2c_slave_seq.sv"
+
+    `include "i2c_seq_lib.svh"
+    `include "i2c_base_test.sv"
 endpackage
