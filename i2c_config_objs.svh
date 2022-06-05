@@ -25,21 +25,47 @@
 
 //  Class: test_config
 //
-class test_config extends uvm_object;
-    `uvm_object_utils(test_config);
+import uvm_pkg::*;
+class i2c_test_config extends uvm_object;
+    `uvm_object_utils(i2c_test_config);
 
     //  Group: Variables
     int no_of_cases;
     int no_of_error_cases;
 
+
+    protected address_mode addr_mode  = SHORT;
+    protected speed_mode speed        = STANDARD;
+
+    protected bit[9:0] no_slv = 2;
+
     //  Group: Constraints
 
 
     //  Group: Functions
+    extern function void set_addr_mode(address_mode mode);
+    extern function void set_speed(speed_mode mode);
+    extern function void set_no_slv(bit[9:0] no_slv);
 
     //  Constructor: new
-    function new(string name = "test_config");
+    function new(string name = "i2c_test_config");
         super.new(name);
-    endfunction: new
-    
-endclass: test_config
+    endfunction: new    
+endclass: i2c_test_config
+
+function void i2c_test_config::set_addr_mode(address_mode mode);
+    this.addr_mode = mode;
+endfunction: set_addr_mode
+
+function void i2c_test_config::set_speed(speed_mode mode);
+    this.speed = mode;
+endfunction: set_speed
+
+function void i2c_test_config::set_no_slv(bit[9:0] no_slv);
+    if(no_slv >= 10) begin
+        `uvm_warning(get_name(), "Max 10 slaves are supported. Setting no of slaves to 10")
+        no_slv = 10;
+    end
+    this.no_slv = no_slv;
+endfunction: set_no_slv
+
