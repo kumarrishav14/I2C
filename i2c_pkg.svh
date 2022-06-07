@@ -48,12 +48,17 @@ package i2c_pkg;
 
     // UVM components & objects
     `include "i2c_config_objs.svh"
+    `include "i2c_m_config.sv"
+
     `include "i2c_seq_item.sv"
     // `include "i2c_m_seq.sv"
 
     // `include "i2c_slave_seq_item.sv"
     // `include "i2c_slave_seq.sv"
 
+    `include "i2c_m_agent.sv"
+
     `include "i2c_seq_lib.svh"
+    `include "i2c_env.sv"
     `include "i2c_base_test.sv"
 endpackage
